@@ -19,7 +19,7 @@ const inputHandler = (key) => {
 
 const loop = async () => {
 	try{
-		
+		clear();
 		setTimeout(loop, 0);
 	}catch(error){
 		throw new Error(error);
@@ -33,7 +33,11 @@ const main = async () => {
 		loop();
 		//cleanup(0);
 	}catch(error){
-		cleanup(-1);
+		console.error(error);
+		terminal.hideCursor(false);
+		terminal.grabInput(false);
+		terminal.processExit(-1);
+		//cleanup(-1);
 	}
 };
 
